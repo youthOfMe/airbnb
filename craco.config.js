@@ -26,4 +26,4 @@ module.exports = {
             "utils": resolve("src/utils")
         }
     }
-} 
+}
