@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const boxShadow = `        
     transition: box-shadow 1s ease;
@@ -51,5 +51,31 @@ export const RightWrapper = styled.div`
 
         /* 混入 */
         ${props => props.theme.mixin.boxShadow}
+
+        /* ${boxShadow} */
+
+        .panel {
+            position: absolute;
+            top: 54px;
+            right: 0;
+            width: 240px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 6px rgba(0,0,0, .2);
+        }
+
+        .top, .bottom {
+            padding: 10px 0;
+
+            .item {
+                height: 40px;
+                line-height: 40px;
+                padding: 0 16px;
+            }
+        }
+
+        .top {
+            border-bottom: 1px solid #ddd;
+        }
     }
 `
