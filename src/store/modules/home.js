@@ -1,5 +1,6 @@
 import hyRequest, {
-    getHomeGoodPriceData
+    getHomeGoodPriceData,
+    getHomeDiscountData,
 } from '@/services'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
@@ -9,6 +10,9 @@ export const fetchHomeDataAction = createAsyncThunk('fetchdata', (payload, { dis
     getHomeGoodPriceData().then(res => {
         dispatch(changeGoodPriceInfoAction(res))
     })
+    getHomeDiscountData().then(res => {
+        dispatch(changeDiscountInfoAction(res))
+    })
 })
 
 const homeSlice = createSlice({
@@ -16,16 +20,21 @@ const homeSlice = createSlice({
     name: 'home',
     initialState: {
         goodPriceInfo: {},
+        discountInfo: {},
     },
     reducers: {
         changeGoodPriceInfoAction(state, { payload }) {
             state.goodPriceInfo = payload
+        },
+        changeDiscountInfoAction(state, { payload }) {
+            state.discountInfo = payload
         }
     }
 })
 
 export const { 
-    changeGoodPriceInfoAction
+    changeGoodPriceInfoAction,
+    changeDiscountInfoAction,
  } = homeSlice.actions
 
 export default homeSlice.reducer
