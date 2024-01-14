@@ -5,6 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
 
+// 进行封装
 const Home = memo(() => {
     //  从redux中获取数据
     const {
