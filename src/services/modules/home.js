@@ -6,3 +6,8 @@ export function getHomeGoodPriceData() {
     })
 }
 
+export function getHomeDiscountData() {
+    return hyRequest.get({
+        url: '/home/discount'
+    })
+}
