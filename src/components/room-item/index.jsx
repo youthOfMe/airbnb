@@ -17,7 +17,7 @@ const RoomItem = memo((props) => {
                     {itemData.verify_info.messages.join('.')}
                 </div>
                 <div className="name">
-                    {itemData.className}
+                    {itemData.name}
                 </div>
                 <div className="price">
                     ￥{itemData.price} / 晚
