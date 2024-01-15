@@ -4,14 +4,17 @@ import HomeSectionV1 from './c-cpns/home-section-v1'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
+import HomeSectionV2 from './c-cpns/home-section-v2'
 
 // 进行封装
 const Home = memo(() => {
     //  从redux中获取数据
     const {
-        goodPriceInfo
+        goodPriceInfo,
+        discountInfo,
     } = useSelector(state => ({
         goodPriceInfo: state.home.goodPriceInfo,
+        discountInfo: state.home.discountInfo
     }), shallowEqual)
 
     // 派发异步的事件 发送网络请求
@@ -25,6 +28,7 @@ const Home = memo(() => {
             <HomeBanner></HomeBanner>
             <div className="content">
                 { goodPriceInfo && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
+                { discountInfo && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
             </div>
         </HomeWrapper>
     )
