@@ -2,13 +2,14 @@ import PropTypes from 'prop-types'
 import React, { memo, useState } from 'react'
 import { TabsWrapper } from './style'
 import ScrollView from '@/base-ui/scroll-view'
-import { ClassNames } from '@emotion/react'
+import classNames from 'classnames'
 
 const SectionTabs = memo((props) => {
     const { tabNames = [], tabClick } = props
-    const { currentIndex, setCurrentIndex } = useState(0)
+    const [ currentIndex, setCurrentIndex ] = useState(0)
 
     function itemClickHandle(index, item) {
+        console.log(index)
         setCurrentIndex(index)
         tabClick(index, item)
     }
@@ -21,14 +22,15 @@ const SectionTabs = memo((props) => {
                         return (
                             <div
                                 key={item}
-                                className={ClassNames('item', { active: index === currentIndex })}
-                                onClick={e => itemClickHandle(index, item)}
+                                className={classNames('item', { active: index === currentIndex })}
+                                onClick={ e => itemClickHandle(index, item) }
                             >
                                 {item}
                             </div>
                         )
                     })
                 }
+
             </ScrollView>
         </TabsWrapper>
     )

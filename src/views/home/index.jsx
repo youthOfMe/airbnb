@@ -5,6 +5,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
 import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyObject } from '@/utils'
 
 // 进行封装
 const Home = memo(() => {
@@ -27,8 +28,8 @@ const Home = memo(() => {
         <HomeWrapper>
             <HomeBanner></HomeBanner>
             <div className="content">
-                { discountInfo && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
-                { goodPriceInfo && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
+                { isEmptyObject(discountInfo) && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
+                { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
             </div>
         </HomeWrapper>
     )
