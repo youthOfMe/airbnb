@@ -12,9 +12,11 @@ const Home = memo(() => {
     //  从redux中获取数据
     const {
         goodPriceInfo,
+        highScoreInfo,
         discountInfo,
     } = useSelector(state => ({
         goodPriceInfo: state.home.goodPriceInfo,
+        highScoreInfo: state.home.highScoreInfo,
         discountInfo: state.home.discountInfo
     }), shallowEqual)
 
@@ -30,6 +32,7 @@ const Home = memo(() => {
             <div className="content">
                 { isEmptyObject(discountInfo) && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
                 { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
+                { isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}></HomeSectionV1> }
             </div>
         </HomeWrapper>
     )

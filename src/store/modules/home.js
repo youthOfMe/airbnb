@@ -12,7 +12,7 @@ export const fetchHomeDataAction = createAsyncThunk('fetchdata', (payload, { dis
         dispatch(changeGoodPriceInfoAction(res))
     })
     getHomeHighScoreData().then(res => {
-        
+        dispatch(changeHighScoreInfoAction(res))
     })
     getHomeDiscountData().then(res => {
         dispatch(changeDiscountInfoAction(res))
