@@ -27,8 +27,8 @@ const Home = memo(() => {
         <HomeWrapper>
             <HomeBanner></HomeBanner>
             <div className="content">
-                { goodPriceInfo && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
                 { discountInfo && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
+                { goodPriceInfo && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
             </div>
         </HomeWrapper>
     )
