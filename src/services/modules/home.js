@@ -23,3 +23,9 @@ export function getHomeHotrecommendData() {
         url: '/home/hotrecommenddest'
     })
 }
+
+export function getHomePlusData() {
+    return hyRequest.get({
+        url: '/home/plus'
+    })
+}
