@@ -14,10 +14,12 @@ const Home = memo(() => {
         goodPriceInfo,
         highScoreInfo,
         discountInfo,
+        recommendInfo,
     } = useSelector(state => ({
         goodPriceInfo: state.home.goodPriceInfo,
         highScoreInfo: state.home.highScoreInfo,
-        discountInfo: state.home.discountInfo
+        discountInfo: state.home.discountInfo,
+        recommendInfo: state.home.recommendInfo
     }), shallowEqual)
 
     // 派发异步的事件 发送网络请求
@@ -31,6 +33,8 @@ const Home = memo(() => {
             <HomeBanner></HomeBanner>
             <div className="content">
                 { isEmptyObject(discountInfo) && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
+                { isEmptyObject(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}></HomeSectionV2> }
+
                 { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
                 { isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}></HomeSectionV1> }
             </div>
