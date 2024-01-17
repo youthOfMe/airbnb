@@ -23,8 +23,9 @@ export const FooterWrapper = styled.div`
       }
 
       .list {
-        .iten {
+        .item {
           margin-top: 6px;
+          height: 22px;
           color: #767676;
           cursor: pointer;
           &:hover {
