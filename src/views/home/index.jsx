@@ -38,6 +38,8 @@ const Home = memo(() => {
                 { isEmptyObject(discountInfo) && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
                 { isEmptyObject(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}></HomeSectionV2> }
 
+                { isEmptyObject }
+
                 { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
                 { isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}></HomeSectionV1> }
                 { isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo}></HomeSectionV3> }
