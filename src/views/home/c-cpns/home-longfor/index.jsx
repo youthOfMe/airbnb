@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import { LongforWrapper } from './style'
 import SectionHeader from '@/components/section-header'
 import ScrollView from '@/base-ui/scroll-view'
+import LongforItem from '@/components/longfor-item'
 
 const HomeLongfor = memo((props) => {
     const { infoData } = props
@@ -13,7 +14,7 @@ const HomeLongfor = memo((props) => {
                 <ScrollView>
                     {
                         infoData.list.map(item => {
-                            return 
+                            return <LongforItem itemData={item} key={item.city}></LongforItem>
                         })
                     }
                 </ScrollView>
