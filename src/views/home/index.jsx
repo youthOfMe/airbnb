@@ -6,6 +6,7 @@ import { fetchHomeDataAction } from '@/store/modules/home'
 import { HomeWrapper } from './style'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObject } from '@/utils'
+import HomeSectionV3 from './c-cpns/home-section-v3'
 
 // 进行封装
 const Home = memo(() => {
@@ -15,11 +16,13 @@ const Home = memo(() => {
         highScoreInfo,
         discountInfo,
         recommendInfo,
+        plusInfo,
     } = useSelector(state => ({
         goodPriceInfo: state.home.goodPriceInfo,
         highScoreInfo: state.home.highScoreInfo,
         discountInfo: state.home.discountInfo,
-        recommendInfo: state.home.recommendInfo
+        recommendInfo: state.home.recommendInfo,
+        plusInfo: state.home.plusInfo
     }), shallowEqual)
 
     // 派发异步的事件 发送网络请求
@@ -37,6 +40,7 @@ const Home = memo(() => {
 
                 { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
                 { isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}></HomeSectionV1> }
+                { isEmptyObject(plusInfo) && <HomeSectionV3 infoData={plusInfo}></HomeSectionV3> }
             </div>
         </HomeWrapper>
     )
