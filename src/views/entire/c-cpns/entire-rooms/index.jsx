@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux'
 
 const EntireRooms = memo(() => {
     // 从redux中获取roomList数据
-    const {  } = useSelector((state) => {
+    // const {  } = useSelector((state) => {
         
-    })
+    // })
 
     return (
         <RoomsWrapper>
