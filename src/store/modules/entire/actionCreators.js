@@ -20,3 +20,22 @@ export const changeIsLoadingAction = (isLoading) => ({
     type: actionTypes.CHANGE_IS_LOADING,
     isLoading
 })
+
+export const fetchRoomListAction = (page = 0) => {
+    // 返回一个新函数
+    return async (dispatch, getState) => {
+        // 0. 修改currentPage
+        dispatch(changeCurrentPageAction(page))
+
+        // 1. 根据页码获取到最新的数据
+        dispatch(changeIsLoadingAction(true))
+        const res = await getEntireRoomList(page * 20)
+        dispatch(changeIsLoadingAction(false))
+
+        // 2. 获取最新的数据保存到redux
+        const roomList = res.list
+        const totalCount = res.totalCount
+        dispatch(changeRoomListAction(roomList))
+        dispatch(changeTotalCountAction(totalCount))
+    }
+}

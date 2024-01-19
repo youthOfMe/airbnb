@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 
 export const FilterWrapper = styled.div`
-    position: fixed;
+    /* position: fixed;
     top: 80px;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 10; */
     background-color: #fff;
     display: flex;
     align-items: center;
