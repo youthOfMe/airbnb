@@ -7,6 +7,7 @@ import { HomeWrapper } from './style'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObject } from '@/utils'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import HomeLongfor from './c-cpns/home-longfor'
 
 // 进行封装
 const Home = memo(() => {
@@ -16,12 +17,14 @@ const Home = memo(() => {
         highScoreInfo,
         discountInfo,
         recommendInfo,
+        longforInfo,
         plusInfo,
     } = useSelector(state => ({
         goodPriceInfo: state.home.goodPriceInfo,
         highScoreInfo: state.home.highScoreInfo,
         discountInfo: state.home.discountInfo,
         recommendInfo: state.home.recommendInfo,
+        longforInfo: state.home.longforInfo,
         plusInfo: state.home.plusInfo
     }), shallowEqual)
 
@@ -38,7 +41,7 @@ const Home = memo(() => {
                 { isEmptyObject(discountInfo) && <HomeSectionV2 infoData={discountInfo}></HomeSectionV2> }
                 { isEmptyObject(recommendInfo) && <HomeSectionV2 infoData={recommendInfo}></HomeSectionV2> }
 
-                { isEmptyObject }
+                { isEmptyObject(longforInfo) && <HomeLongfor infoData={longforInfo}></HomeLongfor> }
 
                 { isEmptyObject(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo}></HomeSectionV1> }
                 { isEmptyObject(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo}></HomeSectionV1> }
