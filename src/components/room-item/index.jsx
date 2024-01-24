@@ -6,6 +6,13 @@ import { Rating } from '@mui/material'
 const RoomItem = memo((props) => {
     const { itemData, itemWidth = '25%' } = props
 
+    // 单图片展示
+    const puctureElement = (
+        <div className="cover">
+            <img src={itemData.picture_url} alt='' />
+        </div>
+    )
+
     return (
         // 设置为服务器传递过来的字体颜色
         <ItemWrapper verifyColor={itemData.verify_info.text_color || '#39576a'} itemWidth={itemWidth}>
