@@ -1,16 +1,47 @@
 import PropTypes from 'prop-types'
-import React, { memo } from 'react'
+import React, { memo, useState, useRef } from 'react'
 import { ItemWrapper } from './style'
 import { Rating } from '@mui/material'
+import { Carousel } from 'antd'
 
 const RoomItem = memo((props) => {
-    const { itemData, itemWidth = '25%' } = props
+    const { itemData, itemWidth = '25%', itemClick } = props
+    const [ selectIndex, setSelectIndex ] = useState(0)
+    const sliderRef = useRef()
+
+    // 点击组件时间处理逻辑
+    function controlClickHandle(isRight = true, event) {
+        
+    }
 
     // 单图片展示
     const puctureElement = (
         <div className="cover">
             <img src={itemData.picture_url} alt='' />
         </div>
+    )
+
+    const sliderElement = (
+        <div className="swiper">
+            <div className="control">
+                <div className="btn left">
+
+                </div>
+            </div>
+            {/* 走马灯组件 */}
+            <Carousel dot={false} ref={sliderRef}>
+                {
+                    itemData?.picture_urls?.map(item => {
+                        return (
+                            <div className="cover" key={item}>
+                                <img src={item} alt="" />
+                            </div>
+                        )
+                    })
+                }
+            </Carousel>
+        </div>
+        
     )
 
     return (
