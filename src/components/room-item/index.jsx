@@ -3,6 +3,8 @@ import React, { memo, useState, useRef } from 'react'
 import { ItemWrapper } from './style'
 import { Rating } from '@mui/material'
 import { Carousel } from 'antd'
+import IconArrowLeft from '@/assets/svg/icon-arrow-left'
+import IconArrowRight from '@/assets/svg/icon-arrow-right'
 
 const RoomItem = memo((props) => {
     const { itemData, itemWidth = '25%', itemClick } = props
@@ -24,8 +26,11 @@ const RoomItem = memo((props) => {
     const sliderElement = (
         <div className="swiper">
             <div className="control">
-                <div className="btn left">
-
+                <div className="btn left" onClick={e => controlClickHandle(false, e)}>
+                    <IconArrowLeft width="30" height="30"></IconArrowLeft>
+                </div>
+                <div className="btn right" onClick={e => controlClickHandle(true, e)}>
+                    <IconArrowRight width="30" height="30"></IconArrowRight>
                 </div>
             </div>
             {/* 走马灯组件 */}
