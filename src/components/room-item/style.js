@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 
 export const ItemWrapper = styled.div`
-    // 防止因为组件大于flex容器而压缩 所以使用这个进行房子组件和图片被压缩
-    // 压缩可能会导致图片被比例压缩 防止图片被比例压缩
     flex-shrink: 0; // 默认值为1 防止因为flex布局而压缩
     box-sizing: border-box;
     width: ${props => props.itemWidth};
@@ -28,6 +26,74 @@ export const ItemWrapper = styled.div`
       top: 0;
       width: 100%;
       height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .swiper {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        .control {
+            display: flex;
+        }
+    }
+
+    .control {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        display: none;
+        justify-content: space-between;
+        bottom: 0;
+        color: #fff;
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 83px;
+            height: 100%;
+            background: linear-gradient(to left, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+        
+            &.right {
+                background: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+            }
+        }
+    }
+
+    .indicator {
+        position: absolute;
+        bottom: 10px;
+        width: 30%;
+        z-index: 9; // 研究z-index
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+
+        .item {
+            flex-shrink:0; // 解决flex宽度被压缩 https://blog.csdn.net/web_ding/article/details/123543660
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            
+            .dot {
+                width: 6px;
+                height: 6px;
+                background-color: #fff;
+                border-radius: 50%;
+
+                &.active {
+                    width: 8px;
+                    height: 8px;
+                    background-color: red;
+                }
+            }
+        }
     }
   }
 

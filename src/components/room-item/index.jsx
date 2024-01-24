@@ -13,13 +13,28 @@ const RoomItem = memo((props) => {
     const [ selectIndex, setSelectIndex ] = useState(0)
     const sliderRef = useRef()
 
-    // 点击组件时间处理逻辑
+    // 点击组件事件处理逻辑
+    // 事件处理的逻辑
     function controlClickHandle(isRight = true, event) {
-        
+        isRight ? sliderRef.current.next() : sliderRef.current.prev()
+
+        // 最新的索引
+        let newIndex = isRight ? selectIndex + 1 : selectIndex - 1
+        const length = itemData.picture_urls.length
+        if(newIndex < 0) newIndex = length - 1
+        if(newIndex > length - 1) newIndex = 0
+        setSelectIndex(newIndex)
+
+        // 组织事件冒泡
+        event.stopPropagation()
+    }
+
+    function itemClickHandle() {
+        if(itemClick) itemClick(itemData) 
     }
 
     // 单图片展示
-    const puctureElement = (
+    const pictureElement = (
         <div className="cover">
             <img src={itemData.picture_url} alt='' />
         </div>
@@ -38,7 +53,7 @@ const RoomItem = memo((props) => {
             <div className="indicator">
                 <Indicator selectIndex={selectIndex}>
                     {
-                        itemData?.picture_url?.map((item, index) => {
+                        itemData?.picture_urls?.map((item, index) => {
                             return (
                                 <div className="item" key={item}>
                                     <span className={classNames("dot", { active: selectIndex === index })}></span>
@@ -49,7 +64,7 @@ const RoomItem = memo((props) => {
                 </Indicator>
             </div>
             {/* 走马灯组件 */}
-            <Carousel dot={false} ref={sliderRef}>
+            <Carousel dots={false} ref={sliderRef}>
                 {
                     itemData?.picture_urls?.map(item => {
                         return (
@@ -68,9 +83,8 @@ const RoomItem = memo((props) => {
         // 设置为服务器传递过来的字体颜色
         <ItemWrapper verifyColor={itemData.verify_info.text_color || '#39576a'} itemWidth={itemWidth}>
             <div className="inner">
-                <div className="cover">
-                    <img src={itemData.picture_url} alt='' />
-                </div>
+                { !itemData.picture_urls ? pictureElement : sliderElement }
+
                 <div className="desc">
                     {itemData.verify_info.messages.join('.')}
                 </div>

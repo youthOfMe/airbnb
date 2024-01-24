@@ -8,22 +8,23 @@ const Indicator = memo((props) => {
 
     useEffect(() => {
         // 1. 获取selectIndex对应的item
-        const selectItemEl = contentRef.children[selectIndex]
+        const selectItemEl = contentRef.current.children[selectIndex]
         const itemLeft = selectItemEl.offsetLeft
-        const itemWiidth = selectItemEl.clientWidth
+        const itemWidth = selectItemEl.clientWidth
 
         // 2. 获取content的宽度
         const contentWidth = contentRef.current.clientWidth
         const contentScroll = contentRef.current.scrollWidth
 
         // 3. 获取selectIndex要滚动的距离
-        let distance = itemLeft + itemWiidth * 0.5 - contentRef * 0.5
+        let distance = itemLeft + itemWidth * 0.5 - contentWidth * 0.5
+
         if (distance < 0) distance = 0 // 左边的特俗情况处理
         const totalDistance = contentScroll - contentWidth
         if (distance > totalDistance) distance = totalDistance // 右边的特俗情况处理
 
-        contentRef.current.style.transform = `translate(${-distance})`
-    })
+        contentRef.current.style.transform = `translate(${-distance}px)`
+    }, [selectIndex])
 
     return (
         <IndicatorWrapper>
