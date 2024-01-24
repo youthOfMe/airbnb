@@ -5,6 +5,8 @@ import { Rating } from '@mui/material'
 import { Carousel } from 'antd'
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
 import IconArrowRight from '@/assets/svg/icon-arrow-right'
+import Indicator from '@/base-ui/indicator'
+import classNames from 'classnames'
 
 const RoomItem = memo((props) => {
     const { itemData, itemWidth = '25%', itemClick } = props
@@ -34,7 +36,17 @@ const RoomItem = memo((props) => {
                 </div>
             </div>
             <div className="indicator">
-                
+                <Indicator selectIndex={selectIndex}>
+                    {
+                        itemData?.picture_url?.map((item, index) => {
+                            return (
+                                <div className="item" key={item}>
+                                    <span className={classNames("dot", { active: selectIndex === index })}></span>
+                                </div>
+                            )
+                        })
+                    }
+                </Indicator>
             </div>
             {/* 走马灯组件 */}
             <Carousel dot={false} ref={sliderRef}>
