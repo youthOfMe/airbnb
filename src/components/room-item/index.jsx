@@ -33,6 +33,9 @@ const RoomItem = memo((props) => {
                     <IconArrowRight width="30" height="30"></IconArrowRight>
                 </div>
             </div>
+            <div className="indicator">
+                
+            </div>
             {/* 走马灯组件 */}
             <Carousel dot={false} ref={sliderRef}>
                 {
