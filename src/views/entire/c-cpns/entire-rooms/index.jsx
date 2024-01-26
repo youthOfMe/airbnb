@@ -15,9 +15,9 @@ const EntireRooms = memo(() => {
     // 事件处理
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    // const itemClickHandle = useCallback((item) => {
-        
-    // }, [navigate, dispatch])
+    const itemClickHandle = useCallback((item) => {
+        dispatch()
+    }, [navigate, dispatch])
 
     return (
         <RoomsWrapper>
