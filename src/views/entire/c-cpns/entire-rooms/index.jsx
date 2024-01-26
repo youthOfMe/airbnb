@@ -3,6 +3,7 @@ import { RoomsWrapper } from './style'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import RoomItem from '@/components/room-item'
+import { changeDetailInfoAction } from '@/store/modules/detail'
 
 const EntireRooms = memo(() => {
     // 从redux中获取roomList数据
@@ -16,7 +17,8 @@ const EntireRooms = memo(() => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const itemClickHandle = useCallback((item) => {
-        dispatch()
+        dispatch(changeDetailInfoAction(item))
+        navigate("/detail")
     }, [navigate, dispatch])
 
     return (
@@ -30,6 +32,7 @@ const EntireRooms = memo(() => {
                                 itemData={item}
                                 itemWidth="20%"
                                 key={item.id}
+                                iemClick={itemClickHandle}
                             >
                             </RoomItem>
                         )
