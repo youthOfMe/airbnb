@@ -32,7 +32,7 @@ const EntireRooms = memo(() => {
                                 itemData={item}
                                 itemWidth="20%"
                                 key={item.id}
-                                iemClick={itemClickHandle}
+                                itemClick={itemClickHandle}
                             >
                             </RoomItem>
                         )

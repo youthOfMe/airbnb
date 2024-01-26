@@ -30,7 +30,7 @@ const RoomItem = memo((props) => {
     }
 
     function itemClickHandle() {
-        if(itemClick) itemClick(itemData) 
+        if(itemClick) itemClick(itemData)
     }
 
     // 单图片展示
@@ -81,7 +81,7 @@ const RoomItem = memo((props) => {
 
     return (
         // 设置为服务器传递过来的字体颜色
-        <ItemWrapper verifyColor={itemData.verify_info.text_color || '#39576a'} itemWidth={itemWidth}>
+        <ItemWrapper verifyColor={itemData.verify_info.text_color || '#39576a'} itemWidth={itemWidth} onClick={itemClickHandle}>
             <div className="inner">
                 { !itemData.picture_urls ? pictureElement : sliderElement }
 
@@ -105,7 +105,9 @@ const RoomItem = memo((props) => {
 })
 
 RoomItem.propTypes = {
-    itemData: PropTypes.object
+    itemData: PropTypes.object,
+    itemWidth: PropTypes.string,
+    itemClick: PropTypes.func
 }
 
 export default RoomItem
