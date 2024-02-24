@@ -11,7 +11,7 @@ const Entire = memo(() => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchRoomListAction())
-    })
+    }, [dispatch])
 
     return (
         <EntireWrapper>

@@ -1,4 +1,4 @@
-import hyRequest, {
+import {
     getHomeGoodPriceData,
     getHomeHighScoreData,
     getHomeDiscountData,
@@ -9,8 +9,6 @@ import hyRequest, {
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchHomeDataAction = createAsyncThunk('fetchdata', (payload, { dispatch, getState }) => {
-    const state = getState()
-    
     getHomeGoodPriceData().then(res => {
         dispatch(changeGoodPriceInfoAction(res))
     })

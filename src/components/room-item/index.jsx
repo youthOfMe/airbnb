@@ -25,7 +25,7 @@ const RoomItem = memo((props) => {
         if(newIndex > length - 1) newIndex = 0
         setSelectIndex(newIndex)
 
-        // 组织事件冒泡
+        // 阻止事件冒泡
         event.stopPropagation()
     }
 
